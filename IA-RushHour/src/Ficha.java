@@ -24,16 +24,23 @@ public class Ficha {
     }
     
     //Valida que un moviemiento sea valido en el tablero
-    public boolean movEsValido(){
+    public boolean movEsValido(String tipoMov){
         for (int i = 0; i < posiciones.length; i++) {
-            if(posiciones[i]+1 > 5 || posiciones[i]-1 < 0){
-                return false;
+            if(tipoMov.equals("ARRIBA")||tipoMov.equals("IZQUIERDA")){
+                if(posiciones[i]-1 < 0){
+                    return false;
+                }
+            }
+            if(tipoMov.equals("ABAJO")||tipoMov.equals("DERECHA")){
+                if(posiciones[i]+1 > 5 ){
+                    return false;
+                }
             }
         }
         return true;
     }
-    public void mover(String tipoMov){
-        if(movEsValido()){
+    public boolean mover(String tipoMov){
+        if(movEsValido(tipoMov)){
             switch(tipoMov){
                 case "ARRIBA":case "IZQUIERDA":
                     for (int i = 0; i < posiciones.length; i++) {
@@ -45,10 +52,12 @@ public class Ficha {
                         this.posiciones[i] = posiciones[i]+1;
                     }
                     break;
-            } 
+            }
+            return true;
         }
         else{
             System.out.println("Error no puede mover ficha a ese lugar");
+            return false;
         }
     }    
     public void imprimirPosicion(){

@@ -21,12 +21,13 @@ public class Tablero {
                         {0,0,0,0,0,0},
                         {0,0,0,0,0,0}
     };
+    //Aqui se setea el tablero
     public boolean tableroValido(ArrayList<Ficha> fichas){
         int x,y;
         int tipoFicha = 0;
         for (int i = 0; i < fichas.size(); i++) {
             tipoFicha = fichas.get(i).tipo;
-            if(fichas.get(i).forma.equals("vertical")){
+            if(fichas.get(i).forma.equals("horizontal")){
                 x = fichas.get(i).posicion;
                 for (int j = 0; j < fichas.get(i).posiciones.length; j++) {
                     y = fichas.get(i).posiciones[j]; //Y va cambiando
@@ -57,8 +58,10 @@ public class Tablero {
     public void mostrarTablero(){
         for (int i = 0; i < this.tablero.length; i++) {
             for (int j = 0; j < this.tablero[i].length; j++) {
-                System.out.println(" "+this.tablero[i][j]+" ");
+                System.out.print(" "+this.tablero[i][j]+" ");
             }
+            System.out.println("");
         }
+        System.out.println("");
     }
 }
