@@ -27,7 +27,7 @@ public class Car {
                 if(configuration[x][y] != 0 ){
                          g.setColor(map.get(configuration[x][y]));
                 
-                    g.fillRect((y*100)+0,(x*100)+57 , 100, 100);
+                    g.fillRect((y*100)+4,(x*100)+57 , 100, 100);
                 }
             }
         }
