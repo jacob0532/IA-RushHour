@@ -6,6 +6,8 @@
 package rush.hour.pkg1;
 import java.util.Arrays;
 import AEstrella.*;
+import GUI.RushHour;
+import java.util.ArrayList;
 /**
  *
  * @author sande
@@ -37,16 +39,28 @@ public class RUSHHOUR1 {
         Board aux = new Heuristic().calcAStar( b);
         
         //System.out.println("******************Configuartion******************");
-        int c =0;    
+        ArrayList<Board> list  =  new ArrayList<>();
+        list.add(0, aux);
+         int c =0; 
         while (aux.getPadre()!= null){
-            System.out.println("******************Configuartion******************");
+            list.add(0, aux.getPadre());
             c++;
             new Heuristic().printMatriz(aux.getConfiguration());
             aux = aux.getPadre();
             System.out.println();
         }
+        
         c = c-1;
         System.out.println("Movimientos: " + c);
+
+        System.out.println("contador= "+c);
+        
+        //animacion
+           java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new RushHour(list,exit).setVisible(true);
+            }
+        });
     }
     
     
