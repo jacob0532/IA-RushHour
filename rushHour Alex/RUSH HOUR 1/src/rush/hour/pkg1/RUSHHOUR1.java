@@ -19,12 +19,12 @@ public class RUSHHOUR1 {
         System.out.println("Inicia corrida");
         // TODO code application logic here
         int[][]  configuration={
-                        {0,0,0,0,0,0},
-                        {0,0,0,0,0,0},
-                        {0,0,0,0,0,0},
-                        {0,0,0,0,0,0},
-                        {0,0,0,0,0,0},
-                        {0,0,0,0,0,0}
+                        {2,2,3,11,10,10},
+                        {0,0,3,11,0,0},
+                        {1,1,3,0,0,0},
+                        {4,6,6,7,7,9},
+                        {4,0,0,8,0,9},
+                        {5,5,0,8,0,9}
         };
         int[] exit = {2,5};
         Board b = new Board(configuration, exit);

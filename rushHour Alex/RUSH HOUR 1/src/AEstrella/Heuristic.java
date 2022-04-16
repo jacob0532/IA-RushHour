@@ -25,7 +25,6 @@ public class Heuristic {
         open.remove(b);
         
         b.setH( calcH(b.getConfiguration(), b.getExit()));
-        b.setG(0);
         ArrayList<int[][]> states = generateStates(b);
         for (int x = 0; x < states.size(); x++) {
             boolean ready = false;
