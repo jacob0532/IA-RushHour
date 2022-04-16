@@ -18,7 +18,12 @@ public class RUSHHOUR1 {
     public static void main(String[] args) {
         System.out.println("Inicia corrida");
         // TODO code application logic here
-        int[][]  configuration={
+        //src\rush\hour\pkg1
+        ArchiveManager archivo = new ArchiveManager("src\\rush\\hour\\pkg1\\ConfiguracionInicial.txt");
+        archivo.leerArchivo();
+        int[][] configuration = archivo.getConfiguration();
+        int[] exit = archivo.getBoardExit();
+        /*int[][]  configuration={
                         {2,2,3,11,10,10},
                         {0,0,3,11,0,0},
                         {1,1,3,0,0,0},
@@ -26,21 +31,23 @@ public class RUSHHOUR1 {
                         {4,0,0,8,0,9},
                         {5,5,0,8,0,9}
         };
-        int[] exit = {2,5};
+        int[] exit = {2,5};*/
         Board b = new Board(configuration, exit);
         b.setH(new Heuristic().calcH(b.getConfiguration(), b.getExit()));
         Board aux = new Heuristic().calcAStar( b);
         
-        System.out.println("Configuartion ******************************");
+        //System.out.println("******************Configuartion******************");
         int c =0;    
         while (aux.getPadre()!= null){
+            System.out.println("******************Configuartion******************");
             c++;
-            System.out.println("Configuartion ******************************");
             new Heuristic().printMatriz(aux.getConfiguration());
             aux = aux.getPadre();
             System.out.println();
         }
-        System.out.println("contador= "+c);
+        c = c-1;
+        System.out.println("Movimientos: " + c);
     }
+    
     
 }
