@@ -78,7 +78,7 @@ public class RushHour extends javax.swing.JFrame {
 
     private void btnInitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInitActionPerformed
         Car.dibujar(jPanel1.getGraphics());
-        //repaint();
+        repaint();
     }//GEN-LAST:event_btnInitActionPerformed
 
     /**
