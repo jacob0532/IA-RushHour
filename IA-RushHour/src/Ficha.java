@@ -15,13 +15,14 @@ public class Ficha {
     int posicion;
     int[] posiciones;//[col,col,col] o [fila,fila,fila] dependiendo de la forma y tipo
 
-    public Ficha(int tipo, String forma, int espacios, int posicion) {
+    public Ficha(int tipo, String forma, int espacios, int posicion,int[] posiciones) {
         this.tipo = tipo;
         this.forma = forma;
         this.espacios = espacios;
         this.posicion = posicion;
-        this.posiciones = new int[espacios];
+        this.posiciones = posiciones;
     }
+
     
     //Valida que un moviemiento sea valido en el tablero
     public boolean movEsValido(String tipoMov){
@@ -56,7 +57,7 @@ public class Ficha {
             return true;
         }
         else{
-            System.out.println("Error no puede mover ficha a ese lugar");
+            //System.out.println("Error no puede mover ficha a ese lugar");
             return false;
         }
     }    

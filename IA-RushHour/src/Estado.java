@@ -39,16 +39,18 @@ public class Estado {
         pos2 += 1;
         if(carroPrincipal.forma.equals("vertical")){
             for (int i = pos2; i < 6; i++) {
-                if(refTablero.tablero[i][pos1]!=0){
+                /*if(refTablero.tablero[i][pos1]!=0){
                     cantCarrosBloqueados+=1;
-                }
+                }*/
+                cantCarrosBloqueados+=1;
             }
         }
         else{
             for (int i = pos2; i < 6; i++) {
-                if(refTablero.tablero[pos1][i]!=0){
+                /*if(refTablero.tablero[pos1][i]!=0){
                     cantCarrosBloqueados+=1;
-                }
+                }*/
+                cantCarrosBloqueados+=1;
             }
         }
         return cantCarrosBloqueados;  

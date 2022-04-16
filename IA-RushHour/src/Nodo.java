@@ -13,10 +13,12 @@ import java.util.ArrayList;
  */
 public class Nodo {
     Estado dato;
+    Nodo padre;
     ArrayList<Nodo> hijos = new ArrayList<>();
 
-    public Nodo(Estado dato) {
+    public Nodo(Estado dato,Nodo padre) {
         this.dato = dato;
+        this.padre = padre;
     }
     
     public int cantHijos(){
@@ -36,21 +38,16 @@ public class Nodo {
         }
     }
     public void hijosValiosos(){
-        ArrayList<Boolean> listaAux = new ArrayList<>();
-        for (int i = 0; i < this.cantHijos(); i++) {
-            listaAux.add(false);
-        }
+        boolean bandera = false;
         for (int i = 0; i < this.cantHijos(); i++) {
             for (int j = 0; j < this.cantHijos(); j++) {
                 if(this.hijos.get(i).dato.estimacionPeso > this.hijos.get(j).dato.estimacionPeso){
-                    listaAux.set(i, Boolean.TRUE);
+                    bandera = true;
                 }
             }
-        }
-        for (int i = 0; i < this.cantHijos(); i++) {
-            if(listaAux.get(i)){
+            if(bandera){
                 this.hijos.remove(i);
-                listaAux.remove(i);
+                bandera = false;
                 i--;
             }
         }
