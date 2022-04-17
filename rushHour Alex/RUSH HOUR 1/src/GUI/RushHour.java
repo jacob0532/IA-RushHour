@@ -15,7 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
  *
- * @author sande
+ * @author Alexander
  */
 public class RushHour extends javax.swing.JFrame {
 

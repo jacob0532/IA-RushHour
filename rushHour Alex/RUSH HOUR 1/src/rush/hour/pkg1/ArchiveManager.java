@@ -9,7 +9,7 @@ import java.io.*;
 
 /**
  *
- * @author yeico
+ * @author Jacob
  */
 public class ArchiveManager {
     public String archiveName;

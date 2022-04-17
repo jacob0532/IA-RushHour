@@ -14,7 +14,7 @@ import java.util.Random;
 
 /**
  *
- * @author sande
+ * @author Alexander
  */
 public class Car {
       public static void dibujar(Graphics g, Board b,Map m){
@@ -29,7 +29,6 @@ public class Car {
                          g.setColor(map.get(configuration[x][y]));
                          g.fillRect((y*100)+4,(x*100)+57 , 100, 100);
                          
-                   // g.fillRect((y*100)+4,(x*100)+57 , 100, 100);
                 }
                 if(exit[1]==0){
                     g.setColor(Color.GRAY);
@@ -59,7 +58,6 @@ public class Car {
             }
         }
         
-       // g.fillRect(100,100 , 200, 100);
-        //getContentPane().setBackground(new Color(70,80,70));
+       
     }
 }

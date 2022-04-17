@@ -73,6 +73,7 @@ public class Heuristic {
     
     public int calcH(int[][] config, int[] meta){
         int h=0;
+        
         for (int x = 0; x < config.length; x++) {
             for (int y = 0; y < config[x].length; y++) {
               if(config[x][y]==1){
