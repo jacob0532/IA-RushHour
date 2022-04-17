@@ -19,6 +19,7 @@ public class Board {
     private int g = 0;
     private int h = 0;
     Board padre=null;
+    
     public int getF(){
         return (h+g);
     }

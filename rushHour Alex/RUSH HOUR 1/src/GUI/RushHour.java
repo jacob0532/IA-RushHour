@@ -127,7 +127,7 @@ public class RushHour extends javax.swing.JFrame {
            Board get = list.get(i);
             Car.dibujar(jLabel1.getGraphics(),get,map);
             try {
-                Thread.sleep(2000);
+                Thread.sleep(500);
             } catch (InterruptedException ex) {
                 Logger.getLogger(RushHour.class.getName()).log(Level.SEVERE, null, ex);
             }
