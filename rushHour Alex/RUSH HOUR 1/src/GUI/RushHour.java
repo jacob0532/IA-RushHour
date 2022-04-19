@@ -50,9 +50,7 @@ public class RushHour extends javax.swing.JFrame {
         btnInit = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         txtMov = new javax.swing.JTextField();
-        txtDificultad = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         btnUpdate = new javax.swing.JButton();
@@ -82,9 +80,6 @@ public class RushHour extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Movimiento:");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("Dificultad: ");
-
         txtMov.setEditable(false);
         txtMov.setOpaque(false);
         txtMov.addActionListener(new java.awt.event.ActionListener() {
@@ -92,10 +87,6 @@ public class RushHour extends javax.swing.JFrame {
                 txtMovActionPerformed(evt);
             }
         });
-
-        txtDificultad.setEditable(false);
-        txtDificultad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtDificultad.setOpaque(false);
 
         txtArea.setColumns(20);
         txtArea.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -128,15 +119,9 @@ public class RushHour extends javax.swing.JFrame {
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtMov))))
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtMov, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(58, 58, 58)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -149,7 +134,7 @@ public class RushHour extends javax.swing.JFrame {
                         .addGap(62, 62, 62))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
@@ -163,11 +148,7 @@ public class RushHour extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(txtMov, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
+                        .addGap(81, 81, 81)
                         .addComponent(btnInit, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,7 +184,8 @@ public class RushHour extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInitActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
+        btnInit.setEnabled(false);
+        btnUpdate.setEnabled(false);
         archivo.escribirArchivo(txtArea.getText());
         archivo.leerArchivo();
         int[][] configuration = archivo.getConfiguration();
@@ -221,6 +203,8 @@ public class RushHour extends javax.swing.JFrame {
             System.out.println();
         }
         System.out.println("Movimientos: " + c);
+        btnInit.setEnabled(true);
+        btnUpdate.setEnabled(true);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void txtMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMovActionPerformed
@@ -234,12 +218,10 @@ public class RushHour extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     public javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtArea;
-    public javax.swing.JTextField txtDificultad;
     public javax.swing.JTextField txtMov;
     // End of variables declaration//GEN-END:variables
 }

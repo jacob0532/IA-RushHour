@@ -35,7 +35,6 @@ public class Hilo extends Thread{
     public void run(){
         interfaz.btnInit.setEnabled(false);
         interfaz.btnUpdate.setEnabled(false);
-        String dificultad = "";
         Map<Integer, Color> map = new HashMap<Integer, Color>();
         if(list.size()>0){
             int[][] configuration = list.get(0).getConfiguration();
@@ -57,22 +56,6 @@ public class Hilo extends Thread{
                 }
             }    
         }
-        if(list.size()<15){
-            dificultad = "FACIL";
-        }
-        else if(list.size()>=15 && list.size()<30){
-            dificultad = "INTERMEDIA";
-            
-        }
-        else if(list.size()>=30 && list.size()<50){
-            dificultad = "DIFICIL";
-            
-        }
-        else if(list.size()>=50){
-            dificultad = "MUY DIFICIL";
-            
-        }
-        interfaz.txtDificultad.setText(dificultad);
         try{
             while(ejecutar){    
                 for (int i = 0; i < list.size(); i++) {

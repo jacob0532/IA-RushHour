@@ -76,7 +76,6 @@ public class Heuristic {
             }
             return calcAStar(open.get(minorF));
         }else{
-            System.out.println("llego al final jaja "+closed.size());
             return b;
         }
     }
