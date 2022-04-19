@@ -11,15 +11,26 @@ import java.util.Arrays;
 public class Heuristic {
     ArrayList<Board> open  =  new ArrayList<>();
     ArrayList<Board> closed =  new ArrayList<>();
+    
     public void printMatriz(int[][] m ){
         for (int x = 0; x < m.length; x++) {
             for (int y = 0; y < m[x].length; y++) {
                 System.out.print(m[x][y]+", ");
             }
-            System.out.println("");
+            
         }
     }
     
+    /*
+        Parameters: Objeto de tipo Board que representa un del tablero 
+        Return: Objeto de tipo Board que representa la solución
+        Details: Como funciona el algoritmo de A* (estrella), maneja por medio de dos listas de objetos
+            de tipo Board(Lista de abiertas, lista de cerrados), la función es una función recursica que recibe 
+            un posible estado, lo añade a los casos cerrados,genera las posibles conbinaciones siguientes, si alguna
+            de las nuevas ya existe en alguna lista, solo la ignora y caso contrario se añade a la lista de abiertos, en general
+            recorre por medio de un tipo de arbol n´ario todas las posibilidades hasta encontrar la solución optima, la cual 
+            corresponde al objeto de tipo board con f más pequeño
+    */
     public Board calcAStar(Board b){
         closed.add(b);
         open.remove(b);
@@ -53,10 +64,9 @@ public class Heuristic {
                 
             }
         }
-        System.out.println("Matriz:");
-        printMatriz(b.getConfiguration());
-        System.out.println("h= "+b.getH());
-        System.out.println("");
+        
+       //Se imprimer la matriz para ver como va
+        // printMatriz(b.getConfiguration());
         if( b.getH()>1){
             int minorF=0; 
             for (int x = 1; x < open.size(); x++) {
@@ -70,7 +80,14 @@ public class Heuristic {
             return b;
         }
     }
-    
+ 
+    /*
+    Parameters: La matriz de la configuración actual del tablero y una arreglo 
+        con la x y x correspondientes a la posición de la meta.
+    Return: Retorna un entero con una estimación de H techo
+    Details: Realiza una comparación entre lasposiciones asociadas al carrito principal
+        Y el punto asociado a la meta, retorna el valor que da esa comparación con resta.
+    */    
     public int calcH(int[][] config, int[] meta){
         int h=0;
         int var=0;
@@ -98,6 +115,14 @@ public class Heuristic {
         return h;
     }
     
+    /*
+        Parameters: Una matriz de enteros que representa una configuración 
+            posible para el estado
+        Return: Una copia de la matriz de configuración ingresada.
+        Details: Recorre la matriz recibida por parametro y genera un copia para que 
+            no haya corrupción de datos por manejo de punteros
+                
+    */
     public int[][] copyMatriz(int[][] actual){
         int [][] copyActual ={
                         {0,0,0,0,0,0},
@@ -116,6 +141,16 @@ public class Heuristic {
         return copyActual;
     }
     
+    /*
+        Parameters: Objeto de tipo Board
+        Return: Lista de matrices de enteros, que refieren a las posibles combinaciones
+            a armar a partir de ese estado.
+        Details: recorre la matriz de configuración asignada al objeto Board ingresado por parametro, 
+            esto lo hace con el fin de identificar cada carrito, verificar si es vertical u horizontal 
+            y si tiene la posibilidad de moverse, en caso de tener la posibilidad de moverse, añade a la
+            lista que se va a retornar el retorno de la función realizada para mover un carrito.
+    
+    */
     public ArrayList<int[][]> generateStates(Board pBoard)
     {
         ArrayList<Integer> ids = new ArrayList<>();
@@ -129,7 +164,6 @@ public class Heuristic {
                  
                    
                   int id =actual[x][y];
-         //         System.out.println("id diferente de 0= "+id);
                   boolean vertical = false;
                   int count=1;
                   int aux = x;
@@ -176,7 +210,6 @@ public class Heuristic {
                   if (count<=3 && count>=2 ){
                       
                       if(!ids.contains(id)){
-                          //System.out.println("Vehiculo con id= "+id+" anadido");
                           ids.add(id);
                           possibleStates.addAll( move(actual,vertical,x,y));
                       }
@@ -188,6 +221,15 @@ public class Heuristic {
         return possibleStates;
     }
     
+    /*
+        Parameters: Una lista de matrices de dos dimenciones, una matriz de dos dimenciones 
+        Return: Un booleando que indica si la lista ingresada por parametro ya contiene una matriz igual
+            a la ingresada por parametro
+        Details: Recorre la lista comparando matrices con la pasada por parametro, 
+            en caso de encontrar una coincidencia retorna true.
+        //Justificación: Parece basico, pero en java el metodo contain de las listas compara espacios de memoria en el caso de 
+          los matrices, por esto fue necesario realizar esta función
+    */
     public boolean contain(ArrayList<int [][] > list, int[][] obj){
         for (int i = 0; i < list.size(); i++) {
             if(Arrays.deepEquals(list.get(i),obj)){return true;}
@@ -195,6 +237,14 @@ public class Heuristic {
         return false;
     }
     
+    /*
+        Parameters: Matriz de enteros que se refiere a una configuración del tablero, 
+                    un booleano que se refiere a si el carrito a mover es vertical o no
+                    dos enteros x, y que se refieren a la posición de un cuadro del carrito a mover
+        Return: Una lista con las posibles configuraciones 
+        Details: Mueve el auto con el id correspondiente a los indices x, y recibidos, comprueba los posbiles mocimientos 
+            Y los añade a la lista a retornar.
+    */
     public ArrayList<int[][]> move(int [][] actual, boolean isVertical,int x, int y ){
         int [][] actualCopy = copyMatriz(actual);
         int id= actualCopy[x][y];

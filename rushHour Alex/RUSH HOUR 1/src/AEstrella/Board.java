@@ -52,6 +52,7 @@ public class Board {
     }
     private int[] exit = {0,0};
     
+    //Constructor
     public Board(int[][] pBoard, int[] pExit) {
         if (pBoard.length == 6){
             for (int x = 0; x < pBoard.length; x++) {

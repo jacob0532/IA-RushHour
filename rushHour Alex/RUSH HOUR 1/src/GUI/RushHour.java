@@ -199,39 +199,7 @@ public class RushHour extends javax.swing.JFrame {
     private void btnInitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInitActionPerformed
         h = new Hilo(500,list,this);
         h.iniciar();
-        /*Map<Integer, Color> map = new HashMap<Integer, Color>();
         
-        if(list.size()>0){
-            int[][] configuration = list.get(0).getConfiguration();
-            for (int x = 0; x < configuration.length; x++) {
-                for (int y = 0; y < configuration[x].length; y++) {
-                    if(configuration[x][y] != 0 ){
-                        
-                        if(!map.containsKey(configuration[x][y])){
-                            if(configuration[x][y] == 1 ){map.put(configuration[x][y], Color.RED);}
-                            else{
-                                Random rand = new Random();
-                                float r = rand.nextFloat();
-                                float v = rand.nextFloat();
-                                float n = rand.nextFloat();
-                                 map.put(configuration[x][y], new Color(r,v, n));
-                            }
-                        }
-                    }
-                }
-            }    
-        }
-        for (int i = 0; i < list.size(); i++) {
-            update(jLabel1.getGraphics());//.paint(jPanel1.getGraphics());
-            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Utilities/cuadricula.jpg")));
-            Board get = list.get(i);
-            Car.dibujar(jLabel1.getGraphics(),get,map);
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(RushHour.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } */
     }//GEN-LAST:event_btnInitActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -248,7 +216,7 @@ public class RushHour extends javax.swing.JFrame {
         int c =0; 
         while (aux.getPadre()!= null){
             list.add(0, aux.getPadre());
-            new Heuristic().printMatriz(aux.getConfiguration());
+          //  new Heuristic().printMatriz(aux.getConfiguration());
             aux = aux.getPadre();
             System.out.println();
         }

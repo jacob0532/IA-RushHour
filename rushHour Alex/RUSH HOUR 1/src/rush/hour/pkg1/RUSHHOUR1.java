@@ -10,7 +10,7 @@ import GUI.RushHour;
 import java.util.ArrayList;
 /**
  *
- * @author sande
+ * @author Alexander
  */
 public class RUSHHOUR1 {
 
@@ -19,8 +19,7 @@ public class RUSHHOUR1 {
      */
     public static void main(String[] args) {
         System.out.println("Inicia corrida");
-        // TODO code application logic here
-        //src\rush\hour\pkg1
+        
         ArchiveManager archivo = new ArchiveManager("src\\rush\\hour\\pkg1\\ConfiguracionInicial.txt");
         archivo.leerArchivo();
         int[][] configuration = archivo.getConfiguration();
@@ -38,16 +37,15 @@ public class RUSHHOUR1 {
         b.setH(new Heuristic().calcH(b.getConfiguration(), b.getExit()));
         Board aux = new Heuristic().calcAStar( b);
         
-        //System.out.println("******************Configuartion******************");
         ArrayList<Board> list  =  new ArrayList<>();
         list.add(0, aux);
         int c =0; 
         while (aux.getPadre()!= null){
             list.add(0, aux.getPadre());
             c++;
-            new Heuristic().printMatriz(aux.getConfiguration());
+            //new Heuristic().printMatriz(aux.getConfiguration());
             aux = aux.getPadre();
-            System.out.println();
+            
         }
         System.out.println("Movimientos: " + c);
         

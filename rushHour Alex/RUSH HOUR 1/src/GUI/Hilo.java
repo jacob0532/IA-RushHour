@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author yeico
+ * @author Jacob
  */
 //Forma de instanciarlo Hilo h = new Hilo(5,100); 
 public class Hilo extends Thread{
