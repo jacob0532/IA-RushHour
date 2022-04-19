@@ -34,7 +34,7 @@ public class ArchiveManager {
            // Lectura del fichero
            String linea;
            while((linea=br.readLine())!=null)
-              texto+=linea;
+              texto+=linea+"\n";
         }
         catch(Exception e){
            e.printStackTrace();
@@ -52,6 +52,27 @@ public class ArchiveManager {
         }
         setExitAndConfiguration(texto);
         return texto;
+    }
+    public void escribirArchivo(String texto){
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        try
+        {
+            fichero = new FileWriter(archiveName);
+            pw = new PrintWriter(fichero);
+            pw.println(texto);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+           try {
+                // asegurarnos que se cierra el fichero.
+                if (null != fichero)
+                   fichero.close();
+           } catch (Exception e2) {
+              e2.printStackTrace();
+           }
+        }  
     }
     public void setExitAndConfiguration(String text){
         String[] textSplit2;

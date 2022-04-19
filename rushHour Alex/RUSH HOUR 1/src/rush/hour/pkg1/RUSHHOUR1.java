@@ -41,7 +41,7 @@ public class RUSHHOUR1 {
         //System.out.println("******************Configuartion******************");
         ArrayList<Board> list  =  new ArrayList<>();
         list.add(0, aux);
-         int c =0; 
+        int c =0; 
         while (aux.getPadre()!= null){
             list.add(0, aux.getPadre());
             c++;
@@ -49,11 +49,7 @@ public class RUSHHOUR1 {
             aux = aux.getPadre();
             System.out.println();
         }
-        
-        c = c-1;
         System.out.println("Movimientos: " + c);
-
-        System.out.println("contador= "+c);
         
         //animacion
            java.awt.EventQueue.invokeLater(new Runnable() {
